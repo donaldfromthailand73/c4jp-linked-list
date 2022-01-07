@@ -3,55 +3,66 @@
 
 void ll_init(struct ll_node *node) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
+    node->next = NULL;
+    node->prev = NULL;
 }
 
 bool ll_has_next(struct ll_node *node) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
-    return false;
+    return node->next != NULL;
 }
 
 bool ll_has_prev(struct ll_node *node) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
-    return false;
+    return node->prev != NULL;
+
 }
 
 struct ll_node *ll_next(struct ll_node *node) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
-    return NULL;
+    return node->next;
 }
 
 struct ll_node *ll_prev(struct ll_node *node) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
-    return NULL;
+    return node->prev;
 }
 
 size_t ll_size(struct ll_node *head) {
+    // Pass by value so address of pointer passed in is copied to the pointer head
     assert(head != NULL);
-    // TODO: Implement your solution here.
-    return 0;
+    size_t size = 0;
+    while (head != NULL) {
+        size++;
+        head = head->next;
+    }
+    return size;
 }
 
 struct ll_node *ll_head(struct ll_node *list) {
     assert(list != NULL);
-    // TODO: Implement your solution here.
-    return NULL;
+    while (list->prev != NULL) {
+        list = list->prev;
+    }
+    return list;
 }
 
 struct ll_node *ll_tail(struct ll_node *list) {
     assert(list != NULL);
-    // TODO: Implement your solution here.
-    return NULL;
+    while (list->next != NULL) {
+        list = list->next;
+    }
+    return list;
 }
 
 struct ll_node *ll_get(struct ll_node *node, size_t index) {
     assert(node != NULL);
-    // TODO: Implement your solution here.
-    return NULL;
+    int count = 0;
+    while (node != NULL && count != index) {
+        node = node->next;
+        count++;
+    }
+    return node;
 }
 
 void ll_insert_before(struct ll_node *new, struct ll_node *existing) {
